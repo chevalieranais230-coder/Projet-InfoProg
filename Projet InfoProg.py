@@ -234,9 +234,9 @@ class Polynome:
                         q=k                                      #emplacement du degré max m
                         CQ = (P[p][1])/(div_termes[q][1])
                         Q.append([DQ,CQ])                        #termes du quotient
-                        produit = Polynome(div_termes) * Polynome([[DQ,CQ]])                 #calcule D[1]*Q
+                        produit = Polynome(div_termes) * Polynome([[DQ,CQ]])           #calcule D[1]*Q
                         R = Polynome(P) - produit                #reste
-                        P = [term for term in R.termes if term[1] != 0]                      #le polynôme à diviser devient le reste
+                        P = [term for term in R.termes if term[1] != 0]                #le polynôme à diviser devient le reste
                         if P == [] :                             #si jamais il n'y a plus rien à diviser
                             break
             
@@ -1118,29 +1118,29 @@ tk.Label(fenetre, text="●", fg="MediumOrchid1", bg="beige").place(x=1150, y=13
 tk.Label(fenetre, text="2 polynômes", bg="beige").place(x=1165, y=130)
 
 #Graphique
-canvas_graph = None
+canvas_graph = None                              #au début aucun graphique n'est affiché
 def afficher_graphique(poly):
-    global canvas_graph   #garde le canva dans tkinter
+    global canvas_graph                          #garde en mémoire le graphique actuel
 
     if canvas_graph is not None:
-        canvas_graph.get_tk_widget().destroy()   #n'empile pas les graphes les uns sur les autres
+        canvas_graph.get_tk_widget().destroy()   #supprime le graphique déjà présent avant d'en afficher un nouveau
 
-    x = np.linspace(-10, 10, 400)    #crée les points
+    x = np.linspace(-10, 10, 400)        #crée les points
     y = [poly.point(val) for val in x]   #calcule P(x)
 
     fig, ax = plt.subplots()
     ax.plot(x, y)
     ax.axhline(0, color='black', linewidth=1.5)   #axe en 0
     ax.axvline(0, color='black', linewidth=1.5)   #axe en 0
-    ax.grid()   #grille
+    ax.grid()                                     #grille
 
-    fig.subplots_adjust(bottom=0.20)   #permet de bien voir les axes en entier
+    fig.subplots_adjust(bottom=0.20)   #ajuste pour bien voir tous les axes en entier
     fig.subplots_adjust(left=0.15)
 
     
-    canvas_graph = FigureCanvasTkAgg(fig, master=frame_graph)
+    canvas_graph = FigureCanvasTkAgg(fig, master=frame_graph)   #remplace None par le nouveau graphique
     canvas_graph.draw()
-    canvas_graph.get_tk_widget().place(x=0, y=0, width=350, height=250)
+    canvas_graph.get_tk_widget().place(x=0, y=0, width=350, height=250)   #dimensions du graphique
         
 #Format LaTeX
 def convertir_sympy(expr):

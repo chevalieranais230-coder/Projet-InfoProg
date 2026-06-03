@@ -66,18 +66,18 @@ class Polynome:
     def horner(self, abscisse):
         """définit l'évaluation d'un polynôme en un point à l'aide de la méthode d'Horner """
         n=0
-        for i in range (len(self.termes)):   #détermine le degré de self
+        for i in range (len(self.termes)):       #détermine le degré de self
             if self.termes[i][0]>=n:
                 n=self.termes[i][0]
         for j in range(len(self.termes)):
                 if self.termes[j][0]==n:
-                        p=j     #emplacement du degré max n
+                        p=j                      #emplacement du degré max n
         m=self.termes[p][1]
         d=n-1
-        for i in range (n): 
+        for i in range (n):                      #initialisation  la méthode d'Horner avec le coefficient de plus haut degré 
             m=m*abscisse
-            k=-1        #pour cas où il n'existe pas, le coefficient du degré est égal à 0
-            for j in range(len(self.termes)):       #on veut déterminer où est l'emplacement du coefficient de degré d
+            k=-1                                 #ajout  du coefficient s'il existe, sinon le coefficient est considéré nul 
+            for j in range(len(self.termes)):    #détermination de l'emplacement du coefficient de degré d
                 if self.termes[j][0]==d:
                     k=j
             if k !=-1:

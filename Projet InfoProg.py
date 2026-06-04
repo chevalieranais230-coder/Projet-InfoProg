@@ -672,9 +672,9 @@ class Polynome:
 
     def ppcm(self, Q):
          """ Détermine le PPCM de deux polynômes """
-         G = self.pgcd(Q)  # Calcul du PGCD de self et Q
-         P = self * Q  # Produit des deux polynômes self et Q.
-         Q, R = P / G  # Division
+         G = self.pgcd(Q)  #calcul du PGCD de self et Q
+         P = self * Q  #produit des deux polynômes self et Q
+         Q, R = P / G  #division
          return (Q)
 
 
